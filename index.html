@@ -8,25 +8,48 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="dark:bg-slate-800 dark:text-slate-200">
-    <!-- <h1 x-data="{ message: 'I ❤️ Alpine.js' }" x-text="message"></h1> -->
-    <!--  <div x-data="{nama:'icam'}">
+    <div class="container mx-auto">
+      <!-- <h1 x-data="{ message: 'I ❤️ Alpine.js' }" x-text="message"></h1> -->
+      <!--  <div x-data="{nama:'icam'}">
       <div x-data="{umur : 2}">
         <h3 x-text="nama"></h3>
         <h3 x-text="umur"></h3>
       </div>
     </div> -->
 
-    <!--  <button class="bg-green-500 rounded-md py-1 px-2" x-data="{label:'klik di sini'}" x-text="label"></button>
+      <!--  <button class="bg-green-500 rounded-md py-1 px-2" x-data="{label:'klik di sini'}" x-text="label"></button>
 
     <button x-data @click="alert('tombol telah di klik')">Klik saya</button> -->
 
-    <div x-data="{open:false}" class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow">
-      <!-- <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm">
+      <div x-data="{open:false}" class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow">
+        <!-- ekpresi -->
+        <!-- <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm">
         Hallo, <span x-text="angka">Futuh Iqram Multazam</span> adalah angka <span x-text="angka % 2 === 0 ? 'Genap' : 'Ganjil' "></span>
       </h1> -->
 
-      <button @click="open = !open" x-bind:class="open ? 'bg-red-700' : 'bg-teal-700'" x-text="open ? 'Tutup' : 'Buka' " class="py-2 px-5 rounded-md">Buka</button>
-      <div x-show="open" x-transition:enter.duration.500ms x-transition:leave.duration.1000ms.delay.200ms class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded shadow-lg text-slate-900">Lorem ipsum dolor sit amet.</div>
+        <!-- templeting -->
+        <button @click="open = !open" x-bind:class="open ? 'bg-red-700' : 'bg-teal-700'" x-text="open ? 'Tutup' : 'Buka' " class="py-2 px-5 rounded-md" @click.outside="open = false">Buka</button>
+        <div x-show="open" x-transition:enter.duration.500ms x-transition:leave.duration.1000ms.delay.200ms class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded shadow-lg text-slate-900">Lorem ipsum dolor sit amet.</div>
+      </div>
+
+      <hr class="my-10" />
+
+      <!-- materi events dan dispatch -->
+      <div x-data class="container mx-auto w-1/2 text-center mt-10 bg-red-200 p-10 rounded-xl shadow">
+        <label for="nama" class="text-sm font-medium text-gray-900 block mb-2">Masukan nama</label>
+        <input @keyup.debounce.750="console.log($event.target.value)" type="text" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+        <button @click.stop="alert('button di klik')" type="submit" class="py-2 px-5 mt-5 bg-slate-500 rounded-md">Kirim</button>
+      </div>
     </div>
   </body>
 </html>
+
+<!-- 
+  - Mouse enter
+  - dblclick
+  - console.log($event.target.id)
+  - $event.target.dataset.pesan
+  - $event.target.classList
+  - @log="alert('data telah terkirim')"
+  - @click="$dispatch('log')"
+ -->
