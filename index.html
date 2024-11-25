@@ -40,6 +40,34 @@
         <input @keyup.debounce.750="console.log($event.target.value)" type="text" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
         <button @click.stop="alert('button di klik')" type="submit" class="py-2 px-5 mt-5 bg-slate-500 rounded-md">Kirim</button>
       </div>
+
+      <hr class="my-10" />
+
+      <!-- materi model -->
+      <div x-data="{pesan : '',open: true,hobby: []}" class="container mx-auto w-1/2 text-center mt-10 bg-cyan-500 p-10 rounded-xl shadow">
+        <label for="nama" class="text-sm font-medium text-gray-900 block mb-2">Masukan Pesan</label>
+        <textarea type="text" x-model="pesan" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+        <span class="mt-5 text-lg text-green-900 font-bold flex" x-text="pesan.length > 20 ? 'Pesan anda terlalu panjang, minimal 20 huruf '+ pesan.length : pesan.length " x-bind:class="pesan.length > 20 ? 'text-red-700' : '' "></span>
+
+        <input type="checkbox" id="cekbok" x-model="open" />
+        <label for="cekbok" class="text-black" x-text="open ? 'terisi' : 'kosong' "></label>
+
+        <div class="mt-5 text-black">
+          <div class="flex items-center mb-2">
+            <input id="menulis" x-model="hobby" value="menulis" type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
+            <label for="menulis" class="ml-2 text-sm">Menulis</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input id="basket" x-model="hobby" value="basket" type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
+            <label for="basket" class="ml-2 text-sm">basket</label>
+          </div>
+          <div class="flex items-center mb-2">
+            <input id="ngoding" x-model="hobby" value="ngoding" type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
+            <label for="ngoding" class="ml-2 text-sm">ngoding</label>
+          </div>
+          <p class="text-left text-sm">Hobby : <span x-text="hobby"></span></p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
